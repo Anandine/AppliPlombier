@@ -25,5 +25,4 @@ public class SousCatActivity extends AppCompatActivity {
             }
         });*/
     }
-
 }

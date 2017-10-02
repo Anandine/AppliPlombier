@@ -22,14 +22,6 @@
         android:id="@+id/sous_cat_activity_title"
         tools:text="Sous catégorie 1" />
 
-    <TextView
-        android:text="Règles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_centerHorizontal="true" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,5 +38,23 @@
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView3" />
+
+    <TextView
+        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Plus de détails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="61dp"
+        android:id="@+id/textView"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

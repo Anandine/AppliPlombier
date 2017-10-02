@@ -25,24 +25,15 @@
         android:id="@+id/cat2"
         android:layout_below="@+id/cat1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp" />
+        android:layout_marginTop="50dp" />
 
     <Button
         android:text="Chauffagerie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="50dp"
         android:id="@+id/cat3"
         android:layout_below="@+id/cat2"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Sécurité"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
-        android:id="@+id/cat1"
-        android:layout_below="@+id/activity_title"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -53,4 +44,13 @@
         android:layout_below="@+id/cat3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp" />
+
+    <Button
+        android:text="Sécurité"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:id="@+id/cat1"
+        android:layout_below="@+id/activity_title"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
