@@ -59,12 +59,13 @@ public class SousCatActivity extends AppCompatActivity {
         try{
             String monJson = byteArrayOutputStream.toString();
             JSONObject jsonObject = new JSONObject(monJson);
-            JSONArray subcats = (JSONArray) jsonObject.getJSONArray(title);
+            JSONArray subcats = (JSONArray) jsonObject.getJSONArray(getIntent().getStringExtra("Cat"));
             int num_sous_cat = getIntent().getIntExtra("Num sous cat", 0);
-            JSONArray my_subcat = (JSONArray) subcats.get(num_sous_cat-1);
+            JSONArray my_subcat = (JSONArray) subcats.get(num_sous_cat);
 
-            String text1 = (String) my_subcat.get(1);
-            String text2 = (String) my_subcat.get(2);
+            String text1 = (String) my_subcat.get(2);
+            String text2 = (String) my_subcat.get(3);
+            Log.d("STATE", text1);
 
             // on affiche le premier texte de chaque sous-catégorie
             TextView cat_summary = (TextView) this.findViewById(R.id.summary);

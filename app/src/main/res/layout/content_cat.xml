@@ -13,6 +13,13 @@
     tools:context="fr.appli.anais.appliplombier.CatActivity"
     tools:showIn="@layout/activity_cat">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ln_content_cat"
+        android:layout_below="@+id/cat_activity_title"></LinearLayout>
+
     <TextView
         android:text="Catégorie 1"
         android:layout_width="wrap_content"
@@ -22,21 +29,4 @@
         android:id="@+id/cat_activity_title"
         tools:text="Catégorie 1" />
 
-    <Button
-        android:text="Sous catégorie 1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cat_activity_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp"
-        android:id="@+id/sous_cat1" />
-
-    <Button
-        android:text="Sous catégorie 2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sous_cat1"
-        android:layout_alignEnd="@+id/sous_cat1"
-        android:layout_marginTop="73dp"
-        android:id="@+id/sous_cat2" />
 </RelativeLayout>

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +39,7 @@ public class CatActivity extends AppCompatActivity {
             }
         });*/
 
-        String title = getIntent().getStringExtra("Title");
+        final String title = getIntent().getStringExtra("Title");
         TextView cat_title = (TextView) this.findViewById(R.id.cat_activity_title);
         if (title != null){
             cat_title.setText(title);
@@ -58,14 +59,37 @@ public class CatActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }try{
+            //on ajoute dynamiquement autant de boutons que de sous cat
             String monJson = byteArrayOutputStream.toString();
             JSONObject jsonObject = new JSONObject(monJson);
             JSONArray subcats = (JSONArray) jsonObject.getJSONArray(title);
-            for (int i=0;i<subcats.length();i++){
-                Button myButton = new Button(this);
-                String btn = ((JSONArray) subcats.get(i)).get(0).toString();
-                myButton.setText(btn);
-                Log.d("STATE", btn);
+            for (int i=0;i<=subcats.length();i++){
+                String btn_txt = ((JSONArray) subcats.get(i)).get(0).toString();
+                LinearLayout linear = (LinearLayout)findViewById(R.id.ln_content_cat);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                Button btn = new Button(this);
+                btn.setId(i);
+                final int id_ = btn.getId();
+                btn.setText(btn_txt);
+                linear.addView(btn, params);
+                final int finalI = i;
+                btn.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        Intent I = new Intent(CatActivity.this, SousCatActivity.class);
+                        I.putExtra("Title", ((Button) view).getText().toString());
+                        I.putExtra("Cat", title);
+                        I.putExtra("Num sous cat", finalI);
+                        startActivity(I);
+                    }
+                });
+
+               // Button myButton = new Button(this);
+               // String btn = ((JSONArray) subcats.get(i)).get(0).toString();
+                //myButton.setText(btn);
+                //Log.d("STATE", btn);
+
             }
 
         } catch (JSONException je)
@@ -73,9 +97,9 @@ public class CatActivity extends AppCompatActivity {
             //je.printStackTrace();
             Log.d("STATE", je.toString());
         }
-        
 
-        Button sb1 = (Button) this.findViewById(R.id.sous_cat1);
+
+        /*Button sb1 = (Button) this.findViewById(R.id.sous_cat1);
         sb1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent I = new Intent(CatActivity.this, SousCatActivity.class);
@@ -92,7 +116,7 @@ public class CatActivity extends AppCompatActivity {
                 I.putExtra("Num sous cat", 2);
                 startActivity(I);
             }
-        });
+        });*/
     }
 
 }
