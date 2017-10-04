@@ -1,11 +1,13 @@
 package fr.appli.anais.appliplombier;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,10 +66,26 @@ public class SousCatActivity extends AppCompatActivity {
             byte[] buffer = new byte[size];
             is.read(buffer);
             is.close();
-            json = new String(buffer, "UTF-8");
+            JSONObject jsonObject = new JSONObject(buffer.toString());
+            JSONArray subcats = jsonObject.getJSONArray("sous cat");
+            for (int i=0; i < subcats.length(); i++){
+                JSONArray my_subcat = (JSONArray) subcats.get(i);
+
+                // on affiche le premier texte de chaque sous-catégorie
+                Context context = getApplicationContext();
+                CharSequence text = (CharSequence) my_subcat.get(1);
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+
         } catch (IOException ex){
             ex.printStackTrace();
-        }*/
+        } catch (JSONException je) {
+            je.printStackTrace();
+        }
+
         //return json;
     }
 }

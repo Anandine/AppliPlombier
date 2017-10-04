@@ -1,8 +1,9 @@
 {
-	"sous cat1": ["src-file.jpg", "text1 cat1", "text2 cat1"],
-	"sous cat2": ["src-file.jpg", "text1 cat2", "text2 cat2"],
-	"sous cat3": ["src-file.jpg", "text1 cat3", "text2 cat3"],
-	"sous cat4": ["src-file.jpg", "text1 cat4", "text2 cat4"],
-	"sous cat5": ["src-file.jpg", "text1 cat5", "text2 cat5"],
-	"sous cat6": ["src-file.jpg", "text1 cat6", "text2 cat6"]
+	"sous cat":
+		[["src-file.jpg", "text1 cat1", "text2 cat1"],
+		["src-file.jpg", "text1 cat2", "text2 cat2"],
+		["src-file.jpg", "text1 cat3", "text2 cat3"],
+		["src-file.jpg", "text1 cat4", "text2 cat4"],
+		["src-file.jpg", "text1 cat5", "text2 cat5"],
+		["src-file.jpg", "text1 cat6", "text2 cat6"]]
 }
