@@ -1,6 +1,7 @@
 package fr.appli.anais.appliplombier;
 
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,7 +67,10 @@ public class SousCatActivity extends AppCompatActivity {
 
             String text1 = (String) my_subcat.get(2);
             String text2 = (String) my_subcat.get(3);
-            Log.d("STATE", text1);
+            String imgfile = (String) my_subcat.get(1);
+            ImageView img = (ImageView) findViewById(R.id.image);
+            //img.setImageResource(R.drawable.schema1);
+            img.setImageResource(getResources().getIdentifier(imgfile, "drawable", getPackageName()));
 
             // on affiche le premier texte de chaque sous-catégorie
             TextView cat_summary = (TextView) this.findViewById(R.id.summary);

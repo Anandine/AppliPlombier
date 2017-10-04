@@ -1,31 +1,31 @@
 {
   "Sécurité":
   [
-    ["nom cat1", "src-file.jpg", "text1 cat1 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.", "text2 cat1"],
-    ["nom cat2", "src-file.jpg", "text1 cat2 : ", "text2 cat2"],
-    ["nom cat3", "src-file.jpg", "text1 cat3 : ", "text2 cat3"],
-    ["nom cat4", "src-file.jpg", "text1 cat4 : ", "text2 cat4"],
-    ["nom cat5", "src-file.jpg", "text1 cat5 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.", "text2 cat5 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."]
+    ["nom cat1", "schema1.jpg", "text1 cat1 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.", "text2 cat1"],
+    ["nom cat2", "schema2.jpg", "text1 cat2 : ", "text2 cat2"],
+    ["nom cat3", "schema1.jpg", "text1 cat3 : ", "text2 cat3"],
+    ["nom cat4", "schema2.jpg", "text1 cat4 : ", "text2 cat4"],
+    ["nom cat5", "schema1.jpg", "text1 cat5 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.", "text2 cat5 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."]
   ],
   "Bonnes pratiques":
   [
-    ["nom cat1", "src-file.jpg", "text1 cat1", "text2 cat1"],
-    ["nom cat2", "src-file.jpg", "text1 cat2", "text2 cat2"]
+    ["nom cat1", "schema1.jpg", "text1 cat1", "text2 cat1"],
+    ["nom cat2", "schema2.jpg", "text1 cat2", "text2 cat2"]
   ],
   "Chauffagerie":
   [
-    ["nom cat1", "src-file.jpg", "text1 cat1", "text2 cat1"],
-    ["nom cat2", "src-file.jpg", "text1 cat2", "text2 cat2"],
-    ["nom cat3", "src-file.jpg", "text1 cat3", "text2 cat3"]
+    ["nom cat1", "schema1.jpg", "text1 cat1", "text2 cat1"],
+    ["nom cat2", "schema1.jpg", "text1 cat2", "text2 cat2"],
+    ["nom cat3", "schema1.jpg", "text1 cat3", "text2 cat3"]
   ],
   "Plomberie":
   [
-    ["nom cat1", "src-file.jpg", "text1 cat1", "text2 cat1"],
-    ["nom cat2", "src-file.jpg", "text1 cat2", "text2 cat2"],
-    ["nom cat3", "src-file.jpg", "text1 cat3", "text2 cat3"],
-    ["nom cat4", "src-file.jpg", "text1 cat4", "text2 cat4"],
-    ["nom cat5", "src-file.jpg", "text1 cat5", "text2 cat5"],
-    ["nom cat6", "src-file.jpg", "text1 cat6", "text2 cat6"],
-    ["nom cat7", "src-file.jpg", "text1 cat7", "text2 cat7"]
+    ["nom cat1", "schema1.jpg", "text1 cat1", "text2 cat1"],
+    ["nom cat2", "schema1.jpg", "text1 cat2", "text2 cat2"],
+    ["nom cat3", "schema1.jpg", "text1 cat3", "text2 cat3"],
+    ["nom cat4", "schema1.jpg", "text1 cat4", "text2 cat4"],
+    ["nom cat5", "schema1.jpg", "text1 cat5", "text2 cat5"],
+    ["nom cat6", "schema1.jpg", "text1 cat6", "text2 cat6"],
+    ["nom cat7", "schema1.jpg", "text1 cat7", "text2 cat7"]
   ]
 }
