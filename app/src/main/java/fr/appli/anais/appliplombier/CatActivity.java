@@ -37,13 +37,19 @@ public class CatActivity extends AppCompatActivity {
         Button sb1 = (Button) this.findViewById(R.id.sous_cat1);
         sb1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(CatActivity.this, SousCatActivity.class));
+                Intent I = new Intent(CatActivity.this, SousCatActivity.class);
+                I.putExtra("Title", ((Button) v).getText().toString());
+                I.putExtra("Num sous cat", 1);
+                startActivity(I);
             }
         });
         Button sb2 = (Button) this.findViewById(R.id.sous_cat2);
         sb2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(CatActivity.this, SousCatActivity.class));
+                Intent I = new Intent(CatActivity.this, SousCatActivity.class);
+                I.putExtra("Title", ((Button) v).getText().toString());
+                I.putExtra("Num sous cat", 2);
+                startActivity(I);
             }
         });
     }

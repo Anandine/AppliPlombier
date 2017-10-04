@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent I = new Intent(MainActivity.this, CatActivity.class);
                 //on change le texte du titre de l'écran suivant avec le nom du bouton b1
                 I.putExtra("Title", ((Button) v).getText().toString());
+                I.putExtra("Num cat", 1);
                 //on change d'écran au clic du bouton après avoir changé le titre
                 startActivity(I);
             }
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent I = new Intent(MainActivity.this, CatActivity.class);
                 I.putExtra("Title", ((Button) v).getText().toString());
+                I.putExtra("Num cat", 2);
                 startActivity(I);
             }
         });
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent I = new Intent(MainActivity.this, CatActivity.class);
                 I.putExtra("Title", ((Button) v).getText().toString());
+                I.putExtra("Num cat", 3);
                 startActivity(I);
             }
         });
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent I = new Intent(MainActivity.this, CatActivity.class);
                 I.putExtra("Title", ((Button) v).getText().toString());
+                I.putExtra("Num cat", 4);
                 startActivity(I);
             }
         });
