@@ -6,12 +6,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class CatActivity extends AppCompatActivity {
@@ -39,11 +45,35 @@ public class CatActivity extends AppCompatActivity {
         }
 
         //on récupère le json
-        /*InputStream inputStream = getResources().openRawResource(R.raw.test);
+        InputStream inputStream = getResources().openRawResource(R.raw.test);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        int ctr;
+        try {
+            ctr = inputStream.read();
+            while (ctr != -1) {
+                byteArrayOutputStream.write(ctr);
+                ctr = inputStream.read();
+            }
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }try{
+            String monJson = byteArrayOutputStream.toString();
+            JSONObject jsonObject = new JSONObject(monJson);
+            JSONArray subcats = (JSONArray) jsonObject.getJSONArray(title);
+            for (int i=0;i<subcats.length();i++){
+                Button myButton = new Button(this);
+                String btn = ((JSONArray) subcats.get(i)).get(0).toString();
+                myButton.setText(btn);
+                Log.d("STATE", btn);
+            }
 
-        Button myButton = new Button(this);
-        myButton.setText("Add Me");*/
+        } catch (JSONException je)
+        {
+            //je.printStackTrace();
+            Log.d("STATE", je.toString());
+        }
+        
 
         Button sb1 = (Button) this.findViewById(R.id.sous_cat1);
         sb1.setOnClickListener(new View.OnClickListener() {

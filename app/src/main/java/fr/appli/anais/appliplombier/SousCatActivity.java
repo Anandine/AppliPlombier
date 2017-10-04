@@ -59,7 +59,7 @@ public class SousCatActivity extends AppCompatActivity {
         try{
             String monJson = byteArrayOutputStream.toString();
             JSONObject jsonObject = new JSONObject(monJson);
-            JSONArray subcats = (JSONArray) jsonObject.getJSONArray("sous cat");
+            JSONArray subcats = (JSONArray) jsonObject.getJSONArray(title);
             int num_sous_cat = getIntent().getIntExtra("Num sous cat", 0);
             JSONArray my_subcat = (JSONArray) subcats.get(num_sous_cat-1);
 
