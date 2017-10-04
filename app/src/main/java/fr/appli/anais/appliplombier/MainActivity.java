@@ -16,11 +16,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //on déclare le bouton d'id cat1 qu'on stoque dans la variable Button b1
         Button b1 = (Button) this.findViewById(R.id.cat1);
         b1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                //on relie les deux activités
                 Intent I = new Intent(MainActivity.this, CatActivity.class);
+                //on change le texte du titre de l'écran suivant avec le nom du bouton b1
                 I.putExtra("Title", ((Button) v).getText().toString());
+                //on change d'écran au clic du bouton après avoir changé le titre
                 startActivity(I);
             }
         });
