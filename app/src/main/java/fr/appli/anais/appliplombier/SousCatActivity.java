@@ -34,6 +34,7 @@ public class SousCatActivity extends AppCompatActivity {
             }
         });*/
 
+
         /*String in="";
         JSONObject reader = new JSONObject(in);
         try {
@@ -56,7 +57,7 @@ public class SousCatActivity extends AppCompatActivity {
             is.close();
         }
         String json = writer.toString();*/
-        String json = null;
+        /*String json = null;
         try{
             InputStream is = getResources().openRawResource(R.raw.test);
             int size = is.available();
@@ -66,7 +67,7 @@ public class SousCatActivity extends AppCompatActivity {
             json = new String(buffer, "UTF-8");
         } catch (IOException ex){
             ex.printStackTrace();
-        }
+        }*/
         //return json;
     }
 }

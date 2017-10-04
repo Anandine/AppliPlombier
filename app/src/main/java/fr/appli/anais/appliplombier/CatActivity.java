@@ -30,7 +30,6 @@ public class CatActivity extends AppCompatActivity {
 
         String title = getIntent().getStringExtra("Title");
         TextView cat_title = (TextView) this.findViewById(R.id.cat_activity_title);
-        cat_title.setText("Cat1");
         if (title != null){
             cat_title.setText(title);
         }
