@@ -1,0 +1,31 @@
+{
+  "cat1":
+  [
+    ["nom cat1", "src-file.jpg", "text1 cat1", "text2 cat1"],
+    ["nom cat2", "src-file.jpg", "text1 cat2", "text2 cat2"],
+    ["nom cat3", "src-file.jpg", "text1 cat3", "text2 cat3"],
+    ["nom cat4", "src-file.jpg", "text1 cat4", "text2 cat4"],
+    ["nom cat5", "src-file.jpg", "text1 cat5", "text2 cat5"]
+  ],
+  "cat2":
+  [
+    ["nom cat1", "src-file.jpg", "text1 cat1", "text2 cat1"],
+    ["nom cat2", "src-file.jpg", "text1 cat2", "text2 cat2"]
+  ],
+  "cat3":
+  [
+    ["nom cat1", "src-file.jpg", "text1 cat1", "text2 cat1"],
+    ["nom cat2", "src-file.jpg", "text1 cat2", "text2 cat2"],
+    ["nom cat3", "src-file.jpg", "text1 cat3", "text2 cat3"]
+  ],
+  "cat4":
+  [
+    ["nom cat1", "src-file.jpg", "text1 cat1", "text2 cat1"],
+    ["nom cat2", "src-file.jpg", "text1 cat2", "text2 cat2"],
+    ["nom cat3", "src-file.jpg", "text1 cat3", "text2 cat3"],
+    ["nom cat4", "src-file.jpg", "text1 cat4", "text2 cat4"],
+    ["nom cat5", "src-file.jpg", "text1 cat5", "text2 cat5"],
+    ["nom cat6", "src-file.jpg", "text1 cat6", "text2 cat6"],
+    ["nom cat7", "src-file.jpg", "text1 cat7", "text2 cat7"]
+  ]
+}

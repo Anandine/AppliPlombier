@@ -8,7 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 public class CatActivity extends AppCompatActivity {
 
@@ -33,6 +37,13 @@ public class CatActivity extends AppCompatActivity {
         if (title != null){
             cat_title.setText(title);
         }
+
+        //on récupère le json
+        /*InputStream inputStream = getResources().openRawResource(R.raw.test);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        Button myButton = new Button(this);
+        myButton.setText("Add Me");*/
 
         Button sb1 = (Button) this.findViewById(R.id.sous_cat1);
         sb1.setOnClickListener(new View.OnClickListener() {

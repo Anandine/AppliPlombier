@@ -30,17 +30,19 @@ public class SousCatActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        //récupérer le nom de la sous catégorie
         String title = getIntent().getStringExtra("Title");
         TextView cat_title = (TextView) this.findViewById(R.id.sous_cat_activity_title);
         if (title != null){
             cat_title.setText(title);
         }
 
-
+        //récupérer le json test
         InputStream inputStream = getResources().openRawResource(R.raw.test);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
+
+        //on affiche le json
         int ctr;
         try {
             ctr = inputStream.read();
@@ -52,7 +54,8 @@ public class SousCatActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.v("Text Data", byteArrayOutputStream.toString());
+        //Log.v("Text Data", byteArrayOutputStream.toString());
+
         try{
             String monJson = byteArrayOutputStream.toString();
             JSONObject jsonObject = new JSONObject(monJson);
@@ -60,10 +63,10 @@ public class SousCatActivity extends AppCompatActivity {
             int num_sous_cat = getIntent().getIntExtra("Num sous cat", 0);
             JSONArray my_subcat = (JSONArray) subcats.get(num_sous_cat-1);
 
-            // on affiche le premier texte de chaque sous-catégorie
             String text1 = (String) my_subcat.get(1);
             String text2 = (String) my_subcat.get(2);
 
+            // on affiche le premier texte de chaque sous-catégorie
             TextView cat_summary = (TextView) this.findViewById(R.id.summary);
             if (text1 != null){
                 cat_summary.setText(text1);
