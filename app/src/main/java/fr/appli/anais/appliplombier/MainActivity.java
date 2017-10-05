@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent I = new Intent(MainActivity.this, CatActivity.class);
+                //ou
+                //Intent I = new Intent();
+                //intent.getClass(this, CatActivity.class);
                 I.putExtra("Title", ((Button) v).getText().toString());
                 I.putExtra("Num cat", 2);
                 startActivity(I);

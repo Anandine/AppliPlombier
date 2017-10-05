@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -80,10 +81,12 @@ public class SousCatActivity extends AppCompatActivity {
 
             // on affiche le premier texte de chaque sous-catégorie
             TextView cat_summary = (TextView) this.findViewById(R.id.summary);
+            cat_summary.setMovementMethod(new ScrollingMovementMethod());
             if (text1 != null){
                 cat_summary.setText(text1);
             }
             TextView cat_details = (TextView) this.findViewById(R.id.details);
+            cat_details.setMovementMethod(new ScrollingMovementMethod());
             if (text2 != null){
                 cat_details.setText(text2);
             }
