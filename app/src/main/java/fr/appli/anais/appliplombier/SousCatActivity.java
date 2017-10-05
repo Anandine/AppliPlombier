@@ -61,16 +61,22 @@ public class SousCatActivity extends AppCompatActivity {
         try{
             String monJson = byteArrayOutputStream.toString();
             JSONObject jsonObject = new JSONObject(monJson);
-            JSONArray subcats = (JSONArray) jsonObject.getJSONArray(getIntent().getStringExtra("Cat"));
+            JSONArray subcats = jsonObject.getJSONArray(getIntent().getStringExtra("Cat"));
             int num_sous_cat = getIntent().getIntExtra("Num sous cat", 0);
             JSONArray my_subcat = (JSONArray) subcats.get(num_sous_cat);
 
             String text1 = (String) my_subcat.get(2);
             String text2 = (String) my_subcat.get(3);
             String imgfile = (String) my_subcat.get(1);
-            ImageView img = (ImageView) findViewById(R.id.image);
+            // imgfile = imgfile.substring(0, imgfile.length() - 4);  // pour enlever l'extension
+            Log.d("STATE", imgfile);
+
+            int imgID = getResources().getIdentifier(imgfile, "drawable", getPackageName());
+            ImageView image = (ImageView) findViewById(R.id.image);
+            image.setImageResource(imgID);
+            /*ImageView img = (ImageView) findViewById(R.id.image);
             //img.setImageResource(R.drawable.schema1);
-            img.setImageResource(getResources().getIdentifier(imgfile, "drawable", getPackageName()));
+            img.setImageResource(getResources().getIdentifier(imgfile, "drawable", getPackageName()));*/
 
             // on affiche le premier texte de chaque sous-catégorie
             TextView cat_summary = (TextView) this.findViewById(R.id.summary);
