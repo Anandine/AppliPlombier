@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public static void updateJSON(InputStream is){
 
-        File targetFile = new File("src/main/resources/raw/test.tmp");
+        File targetFile = new File("Documents/test.json");
         try {
             byte[] buffer = new byte[is.available()];
             is.read(buffer);
