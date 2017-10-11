@@ -3,7 +3,8 @@
   "Bonnes pratiques":
   [
     ["nom cat1", "schema1", "text1 cat1", "text2 cat1"],
-    ["nom cat2", "schema2", "text1 cat2", "text2 cat2"]
+    ["nom cat2", "schema2", "text1 cat2", "text2 cat2"],
+    ["nom cat3", "schema3", "text1 cat3", "text2 cat3"]
   ],
   "Chauffagerie":
   [
