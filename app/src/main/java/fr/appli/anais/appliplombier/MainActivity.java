@@ -10,10 +10,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button b1;
+    private static final String DEBUG_TAG = "NetworkStatusExample";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +23,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // check if you are connected or not
-        /*if(isConnected()){
+        if(isConnected()){
             Log.d("STATE", "You are conncted");
+            /*Context context = getApplicationContext();
+            CharSequence text = "You are connected";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();*/
         } else
         {
             Log.d("STATE", "Not connected");
-        }*/
+        }
 
         //on déclare le bouton d'id cat1 qu'on stoque dans la variable Button b1
         Button b1 = (Button) this.findViewById(R.id.cat1);
@@ -73,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public boolean isConnected(){
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(MainActivity.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        Log.d("STATE", "is connected");
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected())
             return true;
