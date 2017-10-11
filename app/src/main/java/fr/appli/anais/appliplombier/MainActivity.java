@@ -1,6 +1,10 @@
 package fr.appli.anais.appliplombier;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // check if you are connected or not
+        /*if(isConnected()){
+            Log.d("STATE", "You are conncted");
+        } else
+        {
+            Log.d("STATE", "Not connected");
+        }*/
 
         //on déclare le bouton d'id cat1 qu'on stoque dans la variable Button b1
         Button b1 = (Button) this.findViewById(R.id.cat1);
@@ -59,5 +71,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(I);
             }
         });
+    }
+    public boolean isConnected(){
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(MainActivity.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected())
+            return true;
+        else
+            return false;
     }
 }
