@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();*/
+
         } else
         {
             Log.d("STATE", "Not connected");
@@ -107,7 +109,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... urls) {
 
-            return GET(urls[0]);
+            GET(urls[0]);
+            return "b";
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
@@ -125,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         inputStream.close();
         return result;
     }
-    public static String GET(String url){
+    public static void GET(String url){
         InputStream inputStream = null;
         String result = "";
         try {
@@ -141,20 +144,17 @@ public class MainActivity extends AppCompatActivity {
 
             // convert inputstream to string
             if(inputStream != null)
-                result = convertInputStreamToString(inputStream);
-            else
-                result = "Did not work!";
-
+                updateJSON(inputStream);
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());
         }
-
-        return result;
     }
     public static void updateJSON(InputStream is){
 
-        File targetFile = new File("Documents/test.json");
+        File dcim = Environment.getExternalStorageDirectory();
         try {
+            String fileName = dcim.getCanonicalPath();
+            File targetFile = new File(fileName);
             byte[] buffer = new byte[is.available()];
             is.read(buffer);
             OutputStream outStream = new FileOutputStream(targetFile);

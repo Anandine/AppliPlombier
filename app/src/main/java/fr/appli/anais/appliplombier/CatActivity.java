@@ -2,6 +2,7 @@ package fr.appli.anais.appliplombier;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -41,31 +46,20 @@ public class CatActivity extends AppCompatActivity {
 
         final String title = getIntent().getStringExtra("Title");
         TextView cat_title = (TextView) this.findViewById(R.id.cat_activity_title);
-        if (title != null){
+        if (title != null) {
             cat_title.setText(title);
         }
 
         //on récupère le json
-        InputStream inputStream = getResources().openRawResource(R.raw.test);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        int ctr;
+        String monJson = recupJSON();
+
         try {
-            ctr = inputStream.read();
-            while (ctr != -1) {
-                byteArrayOutputStream.write(ctr);
-                ctr = inputStream.read();
-            }
-            inputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }try{
             //on ajoute dynamiquement autant de boutons que de sous cat
-            String monJson = byteArrayOutputStream.toString();
             JSONObject jsonObject = new JSONObject(monJson);
             JSONArray subcats = (JSONArray) jsonObject.getJSONArray(title);
-            for (int i=0;i<=subcats.length();i++){
+            for (int i = 0; i <= subcats.length(); i++) {
                 String btn_txt = ((JSONArray) subcats.get(i)).get(0).toString();
-                LinearLayout linear = (LinearLayout)findViewById(R.id.ln_content_cat);
+                LinearLayout linear = (LinearLayout) findViewById(R.id.ln_content_cat);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -85,38 +79,36 @@ public class CatActivity extends AppCompatActivity {
                     }
                 });
 
-               // Button myButton = new Button(this);
-               // String btn = ((JSONArray) subcats.get(i)).get(0).toString();
+                // Button myButton = new Button(this);
+                // String btn = ((JSONArray) subcats.get(i)).get(0).toString();
                 //myButton.setText(btn);
                 //Log.d("STATE", btn);
 
             }
 
-        } catch (JSONException je)
-        {
+        } catch (JSONException je) {
             //je.printStackTrace();
             Log.d("STATE", je.toString());
         }
+    }
 
-
-        /*Button sb1 = (Button) this.findViewById(R.id.sous_cat1);
-        sb1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent I = new Intent(CatActivity.this, SousCatActivity.class);
-                I.putExtra("Title", ((Button) v).getText().toString());
-                I.putExtra("Num sous cat", 1);
-                startActivity(I);
+    String recupJSON(){
+        String res = "";
+        try{
+            File dcim = Environment.getExternalStorageDirectory();
+            String fileName = dcim.getCanonicalPath();
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            String line = br.readLine();
+            while(line != null){
+                res += line;
+                line = br.readLine();
             }
-        });
-        Button sb2 = (Button) this.findViewById(R.id.sous_cat2);
-        sb2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent I = new Intent(CatActivity.this, SousCatActivity.class);
-                I.putExtra("Title", ((Button) v).getText().toString());
-                I.putExtra("Num sous cat", 2);
-                startActivity(I);
-            }
-        });*/
+        }catch(FileNotFoundException fe){
+            Log.d("STATE", "recupJson failed");
+        }catch(IOException ie){
+            Log.d("STATE", "recupJson failed");
+        }
+        return res;
     }
 
 }
