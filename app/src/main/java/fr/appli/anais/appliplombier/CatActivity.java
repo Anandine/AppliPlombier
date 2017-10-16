@@ -95,9 +95,9 @@ public class CatActivity extends AppCompatActivity {
     String recupJSON(){
         String res = "";
         try{
-            File dcim = Environment.getExternalStorageDirectory();
-            String fileName = dcim.getCanonicalPath();
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            File dcim = new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_DOWNLOADS), "test.json");
+            BufferedReader br = new BufferedReader(new FileReader(dcim));
             String line = br.readLine();
             while(line != null){
                 res += line;

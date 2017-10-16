@@ -149,19 +149,25 @@ public class MainActivity extends AppCompatActivity {
             Log.d("InputStream", e.getLocalizedMessage());
         }
     }
+
+    /* Checks if external storage is available for read and write */
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(state);
+    }
+
+
     public static void updateJSON(InputStream is){
 
-        File dcim = Environment.getExternalStorageDirectory();
+        File dcim = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS), "test.json");
         try {
-            String fileName = dcim.getCanonicalPath();
-            File targetFile = new File(fileName);
             byte[] buffer = new byte[is.available()];
             is.read(buffer);
-            OutputStream outStream = new FileOutputStream(targetFile);
+            OutputStream outStream = new FileOutputStream(dcim);
             outStream.write(buffer);
         }catch (IOException ie){
             Log.d("STATE", "Problème dans la mise à jour du fichier JSON");
         }
     }
-
 }
