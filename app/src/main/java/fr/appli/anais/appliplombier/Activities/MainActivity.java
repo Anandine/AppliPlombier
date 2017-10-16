@@ -1,4 +1,4 @@
-package fr.appli.anais.appliplombier;
+package fr.appli.anais.appliplombier.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,6 +25,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
+import fr.appli.anais.appliplombier.R;
+import fr.appli.anais.appliplombier.utilities.Json;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button b1;
@@ -36,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // check if you are connected or not
-        if(isConnected()){
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(Json.isConnected(cm)){
             Log.d("STATE", "You are conncted");
             /*Context context = getApplicationContext();
             CharSequence text = "You are connected";
@@ -94,80 +98,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // call AsynTask to perform network operation on separate thread
-        new HttpAsyncTask().execute("https://hyppo.neocities.org/test.json");
-    }
-    public boolean isConnected(){
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        Log.d("STATE", "is connected");
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-            return true;
-        else
-            return false;
-    }
-    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-
-            GET(urls[0]);
-            return "b";
-        }
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(String result) {
-            Toast.makeText(getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
-       }
-    }
-    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
-        String line = "";
-        String result = "";
-        while((line = bufferedReader.readLine()) != null)
-            result += line;
-
-        inputStream.close();
-        return result;
-    }
-    public static void GET(String url){
-        InputStream inputStream = null;
-        String result = "";
-        try {
-
-            // create HttpClient
-            HttpClient httpclient = new DefaultHttpClient();
-
-            // make GET request to the given URL
-            HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
-
-            // receive response as inputStream
-            inputStream = httpResponse.getEntity().getContent();
-
-            // convert inputstream to string
-            if(inputStream != null)
-                updateJSON(inputStream);
-        } catch (Exception e) {
-            Log.d("InputStream", e.getLocalizedMessage());
-        }
-    }
-
-    /* Checks if external storage is available for read and write */
-    public boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(state);
-    }
-
-
-    public static void updateJSON(InputStream is){
-
-        File dcim = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOWNLOADS), "test.json");
-        try {
-            byte[] buffer = new byte[is.available()];
-            is.read(buffer);
-            OutputStream outStream = new FileOutputStream(dcim);
-            outStream.write(buffer);
-        }catch (IOException ie){
-            Log.d("STATE", "Problème dans la mise à jour du fichier JSON");
-        }
+        new Json.HttpAsyncTask().execute("https://hyppo.neocities.org/test.json");
     }
 }

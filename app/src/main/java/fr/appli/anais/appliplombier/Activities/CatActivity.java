@@ -1,10 +1,8 @@
-package fr.appli.anais.appliplombier;
+package fr.appli.anais.appliplombier.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -12,19 +10,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
+
+import fr.appli.anais.appliplombier.R;
+import fr.appli.anais.appliplombier.utilities.Json;
 
 public class CatActivity extends AppCompatActivity {
 
@@ -51,7 +49,7 @@ public class CatActivity extends AppCompatActivity {
         }
 
         //on récupère le json
-        String monJson = recupJSON();
+        String monJson = Json.monJson;
 
         try {
             //on ajoute dynamiquement autant de boutons que de sous cat
@@ -91,24 +89,4 @@ public class CatActivity extends AppCompatActivity {
             Log.d("STATE", je.toString());
         }
     }
-
-    String recupJSON(){
-        String res = "";
-        try{
-            File dcim = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS), "test.json");
-            BufferedReader br = new BufferedReader(new FileReader(dcim));
-            String line = br.readLine();
-            while(line != null){
-                res += line;
-                line = br.readLine();
-            }
-        }catch(FileNotFoundException fe){
-            Log.d("STATE", "recupJson failed");
-        }catch(IOException ie){
-            Log.d("STATE", "recupJson failed");
-        }
-        return res;
-    }
-
 }

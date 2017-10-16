@@ -1,6 +1,8 @@
-package fr.appli.anais.appliplombier;
+package fr.appli.anais.appliplombier.Activities;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,6 +26,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
+
+import fr.appli.anais.appliplombier.R;
+import fr.appli.anais.appliplombier.utilities.Json;
 
 public class SousCatActivity extends AppCompatActivity {
 
@@ -40,27 +46,8 @@ public class SousCatActivity extends AppCompatActivity {
             cat_title.setText(title);
         }
 
-        //récupérer le json test
-        InputStream inputStream = getResources().openRawResource(R.raw.test);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
-
-        //on affiche le json
-        int ctr;
-        try {
-            ctr = inputStream.read();
-            while (ctr != -1) {
-                byteArrayOutputStream.write(ctr);
-                ctr = inputStream.read();
-            }
-            inputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //Log.v("Text Data", byteArrayOutputStream.toString());
-
         try{
-            String monJson = byteArrayOutputStream.toString();
+            String monJson = Json.monJson;
             JSONObject jsonObject = new JSONObject(monJson);
             JSONArray subcats = jsonObject.getJSONArray(getIntent().getStringExtra("Cat"));
             int num_sous_cat = getIntent().getIntExtra("Num sous cat", 0);
@@ -68,16 +55,12 @@ public class SousCatActivity extends AppCompatActivity {
 
             String text1 = (String) my_subcat.get(2);
             String text2 = (String) my_subcat.get(3);
-            String imgfile = (String) my_subcat.get(1);
-            // imgfile = imgfile.substring(0, imgfile.length() - 4);  // pour enlever l'extension
-            Log.d("STATE", imgfile);
-
-            int imgID = getResources().getIdentifier(imgfile, "drawable", getPackageName());
+            String imgB64 = (String) my_subcat.get(1);
+            Log.d("STATE_IMG64", imgB64);
+            byte[] monImage = Base64.decode(imgB64, Base64.DEFAULT);
+            Bitmap monBitmap = BitmapFactory.decodeByteArray(monImage, 0, monImage.length);
             ImageView image = (ImageView) findViewById(R.id.image);
-            image.setImageResource(imgID);
-            /*ImageView img = (ImageView) findViewById(R.id.image);
-            //img.setImageResource(R.drawable.schema1);
-            img.setImageResource(getResources().getIdentifier(imgfile, "drawable", getPackageName()));*/
+            image.setImageBitmap(monBitmap);
 
             // on affiche le premier texte de chaque sous-catégorie
             TextView cat_summary = (TextView) this.findViewById(R.id.summary);
