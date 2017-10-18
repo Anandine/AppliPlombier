@@ -54,9 +54,11 @@ public class CatActivity extends AppCompatActivity {
         //on ajoute dynamiquement autant de boutons que de sous cat
         try {
             JSONObject jsonObject = new JSONObject(monJson);
-            JSONArray subcats = (JSONArray) jsonObject.getJSONArray(title);
-            for (int i = 0; i <= subcats.length(); i++) {
-                String btn_txt = ((JSONArray) subcats.get(i)).get(0).toString();
+            JSONArray cats = (JSONArray) jsonObject.getJSONArray("contenu");
+            int num_cat = getIntent().getIntExtra("Num cat", 0);
+            JSONArray subcats = ((JSONObject) cats.get(num_cat)).getJSONArray("contenu");
+            for (int i = 0; i <= subcats.length(); i++) {;
+                String btn_txt = ((JSONObject) subcats.get(i)).getString("titre");
                 LinearLayout linear = (LinearLayout) findViewById(R.id.ln_content_cat);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
