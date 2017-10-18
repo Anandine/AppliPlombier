@@ -2,7 +2,7 @@
 
   "Bonnes pratiques":
   [
-    ["nom cat1", "schema1", "text1 cat1", "text2 cat1"],
+    ["CECI EST LOCAL WOW", "schema1", "text1 cat1", "text2 cat1"],
     ["nom cat2", "schema2", "text1 cat2", "text2 cat2"],
     ["nom cat3", "schema3", "Sed ut perspiciatis unde omnis iste natus error", "text2 cat3"]
   ],
