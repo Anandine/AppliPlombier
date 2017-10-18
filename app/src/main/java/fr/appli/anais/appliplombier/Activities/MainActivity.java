@@ -11,11 +11,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,7 +34,6 @@ import fr.appli.anais.appliplombier.utilities.Json;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button b1;
     private static final String DEBUG_TAG = "NetworkStatusExample";
 
     @Override
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         // check if you are connected or not
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         if(Json.isConnected(cm)){
-            Log.d("STATE", "You are conncted");
+            Log.d("STATE", "You are connected");
             /*Context context = getApplicationContext();
             CharSequence text = "You are connected";
             int duration = Toast.LENGTH_SHORT;
@@ -54,8 +57,43 @@ public class MainActivity extends AppCompatActivity {
             Log.d("STATE", "Not connected");
         }
 
+        //on récupère le json
+        String monJson = Json.monJson;
+
+        //on ajoute dynamiquement autant de boutons que de sous cat
+        try {
+            JSONObject jsonObject = new JSONObject(monJson);
+            JSONArray cats = (JSONArray) jsonObject.getJSONArray("contenu");
+            for (int i = 0; i <= cats.length(); i++) {
+                String btn_txt = ((JSONObject) cats.get(i)).getString("titreCat");
+                LinearLayout linear = (LinearLayout) findViewById(R.id.main_layout);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                Button btn = new Button(this);
+                btn.setId(i);
+                final int id_ = btn.getId();
+                btn.setText(btn_txt);
+                linear.addView(btn, params);
+                final int finalI = i;
+                Log.d("WOW", btn_txt);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        Intent I = new Intent(MainActivity.this, CatActivity.class);
+                        I.putExtra("Title", ((Button) view).getText().toString());
+                        I.putExtra("Num cat", finalI);
+                        startActivity(I);
+                    }
+                });
+            }
+        } catch (JSONException je) {
+            //je.printStackTrace();
+            Log.d("STATE", je.toString());
+        } catch (Exception e){
+            Log.d("EXCEPTION", "Problème lors de l'affichage des boutons : " + e.toString());
+        }
         //on déclare le bouton d'id cat1 qu'on stoque dans la variable Button b1
-        Button b1 = (Button) this.findViewById(R.id.cat1);
+        /*Button b1 = (Button) this.findViewById(R.id.cat1);
         b1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //on relie les deux activités
@@ -96,8 +134,8 @@ public class MainActivity extends AppCompatActivity {
                 I.putExtra("Num cat", 4);
                 startActivity(I);
             }
-        });
+        });*/
         // call AsynTask to perform network operation on separate thread
-        new Json.HttpAsyncTask().execute("https://hyppo.neocities.org/test.json");
+        new Json.HttpAsyncTask().execute("https://hyppo.neocities.org/bd.json");
     }
 }

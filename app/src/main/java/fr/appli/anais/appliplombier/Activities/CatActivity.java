@@ -51,8 +51,8 @@ public class CatActivity extends AppCompatActivity {
         //on récupère le json
         String monJson = Json.monJson;
 
+        //on ajoute dynamiquement autant de boutons que de sous cat
         try {
-            //on ajoute dynamiquement autant de boutons que de sous cat
             JSONObject jsonObject = new JSONObject(monJson);
             JSONArray subcats = (JSONArray) jsonObject.getJSONArray(title);
             for (int i = 0; i <= subcats.length(); i++) {
@@ -63,6 +63,7 @@ public class CatActivity extends AppCompatActivity {
                         LinearLayout.LayoutParams.WRAP_CONTENT);
                 Button btn = new Button(this);
                 btn.setId(i);
+                Log.d("STATE", btn_txt);
                 final int id_ = btn.getId();
                 btn.setText(btn_txt);
                 linear.addView(btn, params);
@@ -76,14 +77,11 @@ public class CatActivity extends AppCompatActivity {
                         startActivity(I);
                     }
                 });
-
                 // Button myButton = new Button(this);
                 // String btn = ((JSONArray) subcats.get(i)).get(0).toString();
                 //myButton.setText(btn);
                 //Log.d("STATE", btn);
-
             }
-
         } catch (JSONException je) {
             //je.printStackTrace();
             Log.d("STATE", je.toString());

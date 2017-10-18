@@ -24,10 +24,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
-/**
- * Created by hugo on 16/10/17.
- */
-
 public class Json {
 
     public static String monJson = recupJSON();
@@ -101,7 +97,7 @@ public class Json {
     public static void updateJSON(InputStream is) {
 
         File dcim = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOWNLOADS), "test.json");
+                Environment.DIRECTORY_DOWNLOADS), "bd.json");
 
         try {
             Log.d("WOW", dcim.getCanonicalPath());
@@ -120,7 +116,7 @@ public class Json {
         StringBuilder res = new StringBuilder();
         try {
             File dcim = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS), "test.json");
+                    Environment.DIRECTORY_DOWNLOADS), "bd.json");
             BufferedReader br = new BufferedReader(new FileReader(dcim));
             String line = br.readLine();
             while (line != null) {

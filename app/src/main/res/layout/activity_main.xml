@@ -17,7 +17,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:id="@+id/main_layout">
 
             <TextView
                 android:text="Catégories"
@@ -27,41 +28,6 @@
                 android:layout_centerHorizontal="true"
                 android:id="@+id/activity_title" />
 
-            <Button
-                android:text="Bonnes pratiques"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/cat2"
-                android:layout_below="@+id/cat1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp" />
-
-            <Button
-                android:text="Chauffagerie"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:id="@+id/cat3"
-                android:layout_below="@+id/cat2"
-                android:layout_centerHorizontal="true" />
-
-            <Button
-                android:text="Plomberie"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/cat4"
-                android:layout_below="@+id/cat3"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp" />
-
-            <Button
-                android:text="Sécurité"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:id="@+id/cat1"
-                android:layout_below="@+id/activity_title"
-                android:layout_centerHorizontal="true" />
         </LinearLayout>
     </ScrollView>
 
