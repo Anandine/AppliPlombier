@@ -13,6 +13,12 @@
     tools:context="fr.appli.anais.appliplombier.Activities.CatActivity"
     tools:showIn="@layout/activity_cat">
 
+    <ListView
+        android:id="@+id/catListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cat_activity_title" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

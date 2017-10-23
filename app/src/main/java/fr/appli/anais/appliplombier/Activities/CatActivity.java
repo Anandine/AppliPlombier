@@ -1,28 +1,24 @@
 package fr.appli.anais.appliplombier.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.ArrayList;
 
 import fr.appli.anais.appliplombier.R;
 import fr.appli.anais.appliplombier.utilities.Json;
+import fr.appli.anais.appliplombier.utilities.MyAdapter;
 
 public class CatActivity extends AppCompatActivity {
 
@@ -50,6 +46,7 @@ public class CatActivity extends AppCompatActivity {
 
         //on récupère le json
         String monJson = Json.monJson;
+        ArrayList<String> mesSubCats = new ArrayList<>();
 
         //on ajoute dynamiquement autant de boutons que de sous cat
         try {
@@ -58,35 +55,25 @@ public class CatActivity extends AppCompatActivity {
             int num_cat = getIntent().getIntExtra("Num cat", 0);
             JSONArray subcats = ((JSONObject) cats.get(num_cat)).getJSONArray("contenu");
             for (int i = 0; i <= subcats.length(); i++) {;
-                String btn_txt = ((JSONObject) subcats.get(i)).getString("titre");
-                LinearLayout linear = (LinearLayout) findViewById(R.id.ln_content_cat);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT);
-                Button btn = new Button(this);
-                btn.setId(i);
-                Log.d("STATE", btn_txt);
-                final int id_ = btn.getId();
-                btn.setText(btn_txt);
-                linear.addView(btn, params);
-                final int finalI = i;
-                btn.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        Intent I = new Intent(CatActivity.this, SousCatActivity.class);
-                        I.putExtra("Title", ((Button) view).getText().toString());
-                        I.putExtra("Cat", title);
-                        I.putExtra("Num sous cat", finalI);
-                        startActivity(I);
-                    }
-                });
-                // Button myButton = new Button(this);
-                // String btn = ((JSONArray) subcats.get(i)).get(0).toString();
-                //myButton.setText(btn);
-                //Log.d("STATE", btn);
+                mesSubCats.add(((JSONObject) subcats.get(i)).getString("titre"));
             }
         } catch (JSONException je) {
             //je.printStackTrace();
             Log.d("STATE", je.toString());
         }
+
+        ListView maListView = (ListView) findViewById(R.id.catListView);
+        MyAdapter adapter = new MyAdapter(this, mesSubCats);
+        maListView.setAdapter(adapter);
+
+        maListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(getApplicationContext(),
+                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
+                        .show();
+            }
+        });
     }
 }
