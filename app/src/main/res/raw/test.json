@@ -1,45 +1,174 @@
 {
-
-  "Bonnes pratiques":
-  [
-    ["CECI EST LOCAL WOW", "schema1", "text1 cat1", "text2 cat1"],
-    ["nom cat2", "schema2", "text1 cat2", "text2 cat2"],
-    ["nom cat3", "schema3", "Sed ut perspiciatis unde omnis iste natus error", "text2 cat3"]
+  "Bonnes pratiques": [
+    [
+      "CECI EST LOCAL WOW",
+      "schema1",
+      "text1 cat1",
+      "text2 cat1"
+    ],
+    [
+      "nom cat2",
+      "schema2",
+      "text1 cat2",
+      "text2 cat2"
+    ],
+    [
+      "nom cat3",
+      "schema3",
+      "Sed ut perspiciatis unde omnis iste natus error",
+      "text2 cat3"
+    ]
   ],
-  "Chauffagerie":
-  [
-    ["nom cat1", "schema1", "text1 cat1", "text2 cat1"],
-    ["nom cat2", "schema1", "text1 cat2", "Sed ut perspiciatis unde omnis iste natus error"],
-    ["nom cat3", "schema1", "text1 cat3", "text2 cat3"]
+  "Chauffagerie": [
+    [
+      "nom cat1",
+      "schema1",
+      "text1 cat1",
+      "text2 cat1"
+    ],
+    [
+      "nom cat2",
+      "schema1",
+      "text1 cat2",
+      "Sed ut perspiciatis unde omnis iste natus error"
+    ],
+    [
+      "nom cat3",
+      "schema1",
+      "text1 cat3",
+      "text2 cat3"
+    ]
   ],
-  "Plomberie":
-  [
-    ["nom cat1", "schema1", "text1 cat1", "sit voluptatem accusantium doloremque laudantium,"],
-    ["nom cat2", "schema1", "text1 cat2", "text2 cat2"],
-    ["nom cat3", "schema1", "text1 cat3", "sit voluptatem accusantium doloremque laudantium,"],
-    ["nom cat4", "schema1", "text1 cat4", "text2 cat4"],
-    ["nom cat5", "schema1", "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.", "text2 cat5"],
-    ["nom cat6", "schema1", "Sed ut perspiciatis unde omnis iste natus error", "text2 cat6"],
-    ["nom cat7", "schema1", "text1 cat7", "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo."],
-    ["nom cat8", "schema1", "text1 cat8", "sit voluptatem accusantium doloremque laudantium,"],
-    ["nom cat9", "schema1", "sit voluptatem accusantium doloremque laudantium,", "Sed ut perspiciatis unde omnis iste natus error"],
-    ["nom cat10", "schema1", "text1 cat10", "text2 cat10"],
-    ["nom cat11", "schema1", "text1 cat11", "sit voluptatem accusantium doloremque laudantium,"]
+  "Plomberie": [
+    [
+      "nom cat1",
+      "schema1",
+      "text1 cat1",
+      "sit voluptatem accusantium doloremque laudantium,"
+    ],
+    [
+      "nom cat2",
+      "schema1",
+      "text1 cat2",
+      "text2 cat2"
+    ],
+    [
+      "nom cat3",
+      "schema1",
+      "text1 cat3",
+      "sit voluptatem accusantium doloremque laudantium,"
+    ],
+    [
+      "nom cat4",
+      "schema1",
+      "text1 cat4",
+      "text2 cat4"
+    ],
+    [
+      "nom cat5",
+      "schema1",
+      "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.",
+      "text2 cat5"
+    ],
+    [
+      "nom cat6",
+      "schema1",
+      "Sed ut perspiciatis unde omnis iste natus error",
+      "text2 cat6"
+    ],
+    [
+      "nom cat7",
+      "schema1",
+      "text1 cat7",
+      "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo."
+    ],
+    [
+      "nom cat8",
+      "schema1",
+      "text1 cat8",
+      "sit voluptatem accusantium doloremque laudantium,"
+    ],
+    [
+      "nom cat9",
+      "schema1",
+      "sit voluptatem accusantium doloremque laudantium,",
+      "Sed ut perspiciatis unde omnis iste natus error"
+    ],
+    [
+      "nom cat10",
+      "schema1",
+      "text1 cat10",
+      "text2 cat10"
+    ],
+    [
+      "nom cat11",
+      "schema1",
+      "text1 cat11",
+      "sit voluptatem accusantium doloremque laudantium,"
+    ]
   ],
-  "Sécurité":
-  [
-    ["nom cat1", "schema1", "text1 cat1 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.", "text2 cat1"],
-    ["nom cat2", "schema2", "text1 cat2 : ", "text2 cat2"],
-    ["nom cat3", "schema1", "text1 cat3 : ", "sit voluptatem accusantium doloremque laudantium,"],
-    ["nom cat4", "schema2", "text1 cat4 : ", "Sed ut perspiciatis unde omnis iste natus error."],
-    ["nom cat5", "schema1", "text1 cat5 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.", "text2 cat5 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."]
+  "Sécurité": [
+    [
+      "nom cat1",
+      "schema1",
+      "text1 cat1 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+      "text2 cat1"
+    ],
+    [
+      "nom cat2",
+      "schema2",
+      "text1 cat2 : ",
+      "text2 cat2"
+    ],
+    [
+      "nom cat3",
+      "schema1",
+      "text1 cat3 : ",
+      "sit voluptatem accusantium doloremque laudantium,"
+    ],
+    [
+      "nom cat4",
+      "schema2",
+      "text1 cat4 : ",
+      "Sed ut perspiciatis unde omnis iste natus error."
+    ],
+    [
+      "nom cat5",
+      "schema1",
+      "text1 cat5 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.",
+      "text2 cat5 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+    ]
   ],
-  "Bonus":
-  [
-    ["nom cat1", "schema1", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.", "text2 cat1"],
-    ["nom cat2", "schema2", "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.", "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo."],
-    ["nom cat3", "schema1", "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.", "sit voluptatem accusantium doloremque laudantium,"],
-    ["nom cat4", "schema2", "Sed ut perspiciatis unde omnis iste natus error.", "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo."],
-    ["nom cat5", "schema1", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.", "text2 cat5 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."]
+  "Bonus": [
+    [
+      "nom cat1",
+      "schema1",
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+      "text2 cat1"
+    ],
+    [
+      "nom cat2",
+      "schema2",
+      "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.",
+      "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo."
+    ],
+    [
+      "nom cat3",
+      "schema1",
+      "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.",
+      "sit voluptatem accusantium doloremque laudantium,"
+    ],
+    [
+      "nom cat4",
+      "schema2",
+      "Sed ut perspiciatis unde omnis iste natus error.",
+      "totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo."
+    ],
+    [
+      "nom cat5",
+      "schema1",
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, quasi architecto beatae vitae dicta sunt explicabo.",
+      "text2 cat5 : Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+    ]
   ]
 }

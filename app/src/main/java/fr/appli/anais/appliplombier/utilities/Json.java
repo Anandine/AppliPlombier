@@ -1,13 +1,10 @@
 package fr.appli.anais.appliplombier.utilities;
 
-import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Debug;
 import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -29,28 +26,9 @@ public class Json {
     public static String monJson = recupJSON();
 
     public static boolean isConnected(ConnectivityManager cm) {
-        ConnectivityManager connMgr = cm;
         Log.d("STATE", "is connected");
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-            return true;
-        else
-            return false;
-    }
-
-    public static class HttpAsyncTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-
-            GET(urls[0]);
-            return "b";
-        }
-
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(String result) {
-            Log.d("STATE", "update finis");
-        }
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
     }
 
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
@@ -65,8 +43,6 @@ public class Json {
     }
 
     public static void GET(String url) {
-        InputStream inputStream = null;
-        String result = "";
         try {
 
             // create HttpClient
@@ -76,23 +52,16 @@ public class Json {
             HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
 
             // receive response as inputStream
-            inputStream = httpResponse.getEntity().getContent();
+            InputStream inputStream = httpResponse.getEntity().getContent();
 
             // convert inputstream to string
             if (inputStream != null)
                 updateJSON(inputStream);
-                monJson = recupJSON();
+            monJson = recupJSON();
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());
         }
     }
-
-    /* Checks if external storage is available for read and write */
-    public boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(state);
-    }
-
 
     public static void updateJSON(InputStream is) {
 
@@ -129,5 +98,26 @@ public class Json {
             Log.d("STATE", "recupJson failed");
         }
         return res.toString();
+    }
+
+    /* Checks if external storage is available for read and write */
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(state);
+    }
+
+    public static class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            GET(urls[0]);
+            return "b";
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            Log.d("STATE", "update finis");
+        }
     }
 }

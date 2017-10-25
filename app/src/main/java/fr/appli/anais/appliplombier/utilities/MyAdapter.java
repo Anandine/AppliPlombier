@@ -23,6 +23,11 @@ public class MyAdapter extends ArrayAdapter<String> {
     }
 
     @Override
+    public int getCount() {
+        return values.size();
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_list, parent, false);
