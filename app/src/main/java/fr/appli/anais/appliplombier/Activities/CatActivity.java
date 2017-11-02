@@ -1,11 +1,13 @@
 package fr.appli.anais.appliplombier.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +41,8 @@ public class CatActivity extends AppCompatActivity {
         });*/
 
         final String title = getIntent().getStringExtra("Title");
+        final int num_cat = getIntent().getIntExtra("Num cat", 0);
+
         TextView cat_title = (TextView) this.findViewById(R.id.cat_activity_title);
         if (title != null) {
             cat_title.setText(title);
@@ -52,7 +56,6 @@ public class CatActivity extends AppCompatActivity {
         try {
             JSONObject jsonObject = new JSONObject(monJson);
             JSONArray cats = jsonObject.getJSONArray("contenu");
-            int num_cat = getIntent().getIntExtra("Num cat", 0);
             JSONArray subcats = ((JSONObject) cats.get(num_cat)).getJSONArray("contenu");
             for (int i = 0; i <= subcats.length(); i++) {
                 mesSubCats.add(((JSONObject) subcats.get(i)).getString("titre"));
@@ -70,9 +73,11 @@ public class CatActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
-                        .show();
+                Intent I = new Intent(CatActivity.this, SousCatActivity.class);
+                I.putExtra("Cat", title);
+                I.putExtra("Num cat", num_cat);
+                I.putExtra("Num sous cat", position);
+                startActivity(I);
             }
         });
     }

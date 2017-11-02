@@ -1,5 +1,6 @@
 package fr.appli.anais.appliplombier.Activities;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,45 +29,52 @@ public class SousCatActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //récupérer le nom de la sous catégorie
-        String title = getIntent().getStringExtra("Title");
-        TextView cat_title = (TextView) this.findViewById(R.id.sous_cat_activity_title);
-        if (title != null) {
-            cat_title.setText(title);
-        }
-
         try {
             String monJson = Json.monJson;
+            /*
             JSONObject jsonObject = new JSONObject(monJson);
             JSONArray subcats = jsonObject.getJSONArray(getIntent().getStringExtra("Cat"));
             int num_sous_cat = getIntent().getIntExtra("Num sous cat", 0);
-            JSONArray my_subcat = (JSONArray) subcats.get(num_sous_cat);
+            JSONArray my_subcat = (JSONArray) subcats.get(num_sous_cat);*/
+            JSONObject jsonObject = new JSONObject(monJson);
+            JSONArray cat = jsonObject.getJSONArray("contenu");
+            int num_cat = getIntent().getIntExtra("Num cat", 0);
+            int num_sous_cat = getIntent().getIntExtra("Num sous cat", 0);
+            JSONArray subcats = ((JSONObject) cat.get(num_cat)).getJSONArray("contenu");
+            JSONObject subcat = (JSONObject) subcats.get(num_sous_cat);
 
-            String text1 = (String) my_subcat.get(2);
-            String text2 = (String) my_subcat.get(3);
-            String imgB64 = (String) my_subcat.get(1);
+            String title = subcat.getString("titre");
+            String presentation = subcat.getString("presentation");
+            String description = subcat.getString("description");
+            String imgB64 = subcat.getString("image");
 
-            Log.d("STATE_IMG64", imgB64);
+            TextView cat_title = (TextView) this.findViewById(R.id.sous_cat_activity_title);
+            if (title != null) {
+                cat_title.setText(title);
+            }
+            // on affiche le premier texte de chaque sous-catégorie
+            TextView cat_summary = (TextView) this.findViewById(R.id.summary);
+            cat_summary.setMovementMethod(new ScrollingMovementMethod());
+            if (presentation != null) {
+                cat_summary.setText(presentation);
+            }
+            TextView cat_details = (TextView) this.findViewById(R.id.details);
+            cat_details.setMovementMethod(new ScrollingMovementMethod());
+            if (description != null) {
+                cat_details.setText(description);
+            }
+
             byte[] monImage = Base64.decode(imgB64, Base64.DEFAULT);
             Bitmap monBitmap = BitmapFactory.decodeByteArray(monImage, 0, monImage.length);
             ImageView image = (ImageView) findViewById(R.id.image);
             image.setImageBitmap(monBitmap);
-
-            // on affiche le premier texte de chaque sous-catégorie
-            TextView cat_summary = (TextView) this.findViewById(R.id.summary);
-            cat_summary.setMovementMethod(new ScrollingMovementMethod());
-            if (text1 != null) {
-                cat_summary.setText(text1);
-            }
-            TextView cat_details = (TextView) this.findViewById(R.id.details);
-            cat_details.setMovementMethod(new ScrollingMovementMethod());
-            if (text2 != null) {
-                cat_details.setText(text2);
-            }
         } catch (JSONException je) {
             //je.printStackTrace();
             Log.d("STATE", je.toString());
-        }
 
+            Context context = getApplicationContext();
+            Toast toast = Toast.makeText(context, je.toString(), Toast.LENGTH_LONG);
+            toast.show();
+        }
     }
 }
