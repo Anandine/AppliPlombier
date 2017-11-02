@@ -49,7 +49,7 @@ public class CatActivity extends AppCompatActivity {
         }
 
         //on récupère le json
-        String monJson = Json.monJson;
+        String monJson = Json.recupJSON(getApplicationContext());
         ArrayList<String> mesSubCats = new ArrayList<>();
 
         //on ajoute dynamiquement autant de boutons que de sous cat

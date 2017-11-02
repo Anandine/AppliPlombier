@@ -30,7 +30,7 @@ public class SousCatActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         try {
-            String monJson = Json.monJson;
+            String monJson = Json.recupJSON(getApplicationContext());
             /*
             JSONObject jsonObject = new JSONObject(monJson);
             JSONArray subcats = jsonObject.getJSONArray(getIntent().getStringExtra("Cat"));

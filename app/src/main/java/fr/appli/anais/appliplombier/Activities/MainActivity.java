@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //on récupère le json
-        String monJson = Json.monJson;
+        String monJson = Json.recupJSON(getApplicationContext());
 
         //on ajoute dynamiquement autant de boutons que de sous cat
         try {

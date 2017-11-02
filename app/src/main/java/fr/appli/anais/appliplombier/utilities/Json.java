@@ -1,5 +1,6 @@
 package fr.appli.anais.appliplombier.utilities;
 
+import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -12,8 +13,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,9 +22,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
-public class Json {
+import fr.appli.anais.appliplombier.R;
 
-    public static String monJson = recupJSON();
+public class Json {
 
     public static boolean isConnected(ConnectivityManager cm) {
         Log.d("STATE", "is connected");
@@ -57,7 +58,6 @@ public class Json {
             // convert inputstream to string
             if (inputStream != null)
                 updateJSON(inputStream);
-            monJson = recupJSON();
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());
         }
@@ -81,7 +81,7 @@ public class Json {
         }
     }
 
-    public static String recupJSON() {
+    public static String recupJSON(Context context) {
         StringBuilder res = new StringBuilder();
         try {
             File dcim = new File(Environment.getExternalStoragePublicDirectory(
@@ -92,12 +92,31 @@ public class Json {
                 res.append(line);
                 line = br.readLine();
             }
-        } catch (FileNotFoundException fe) {
-            Log.d("STATE", "recupJson failed");
-        } catch (IOException ie) {
-            Log.d("STATE", "recupJson failed");
+        } catch (IOException ioe) {
+            // TODO mettre un toaster pour avertir l'utilisateur
+            return recupJSONLocal(context);
         }
         return res.toString();
+    }
+
+    private static String recupJSONLocal(Context context) {
+        InputStream inputStream = context.getResources().openRawResource(R.raw.test);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        int ctr;
+        try {
+            ctr = inputStream.read();
+            while (ctr != -1) {
+                byteArrayOutputStream.write(ctr);
+                ctr = inputStream.read();
+            }
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.v("Text Data", byteArrayOutputStream.toString());
+        String monJson = byteArrayOutputStream.toString();
+        return monJson;
     }
 
     /* Checks if external storage is available for read and write */
