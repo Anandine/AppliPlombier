@@ -50,7 +50,8 @@ public class CatActivity extends AppCompatActivity {
 
         //on récupère le json
         String monJson = Json.recupJSON(getApplicationContext());
-        ArrayList<String> mesSubCats = new ArrayList<>();
+        ArrayList<String> mesSubCatsTexts = new ArrayList<>();
+        ArrayList<String> mesSubCatsImages = new ArrayList<>();
 
         //on ajoute dynamiquement autant de boutons que de sous cat
         try {
@@ -58,7 +59,8 @@ public class CatActivity extends AppCompatActivity {
             JSONArray cats = jsonObject.getJSONArray("contenu");
             JSONArray subcats = ((JSONObject) cats.get(num_cat)).getJSONArray("contenu");
             for (int i = 0; i <= subcats.length(); i++) {
-                mesSubCats.add(((JSONObject) subcats.get(i)).getString("titre"));
+                mesSubCatsTexts.add(((JSONObject) subcats.get(i)).getString("titre"));
+                mesSubCatsImages.add(((JSONObject) subcats.get(i)).getString("image"));
             }
         } catch (JSONException je) {
             //je.printStackTrace();
@@ -66,7 +68,7 @@ public class CatActivity extends AppCompatActivity {
         }
 
         ListView maListView = (ListView) findViewById(R.id.catListView);
-        MyAdapter adapter = new MyAdapter(this, mesSubCats);
+        MyAdapter adapter = new MyAdapter(getApplicationContext(), mesSubCatsTexts, mesSubCatsImages);
         maListView.setAdapter(adapter);
 
         maListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

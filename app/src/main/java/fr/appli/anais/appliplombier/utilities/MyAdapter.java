@@ -2,10 +2,14 @@ package fr.appli.anais.appliplombier.utilities;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,17 +18,19 @@ import fr.appli.anais.appliplombier.R;
 
 public class MyAdapter extends ArrayAdapter<String> {
     private final Context context;
-    private final ArrayList<String> values;
+    private final ArrayList<String> texts;
+    private final ArrayList<String> images;
 
-    public MyAdapter(Context context, ArrayList<String> values) {
-        super(context, 0, values);
+    public MyAdapter(Context context, ArrayList<String> texts, ArrayList<String> images) {
+        super(context, 0, texts);
         this.context = context;
-        this.values = values;
+        this.texts = texts;
+        this.images = images;
     }
 
     @Override
     public int getCount() {
-        return values.size();
+        return texts.size();
     }
 
     @Override
@@ -33,7 +39,12 @@ public class MyAdapter extends ArrayAdapter<String> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_list, parent, false);
         }
         TextView itemText = (TextView) convertView.findViewById(R.id.itemText);
-        itemText.setText(values.get(position));
+        itemText.setText(texts.get(position));
+
+        ImageView itemImage = (ImageView) convertView.findViewById(R.id.itemImage);
+        byte[] monImage = Base64.decode(images.get(position), Base64.DEFAULT);
+        Bitmap monBitmap = BitmapFactory.decodeByteArray(monImage, 0, monImage.length);
+        itemImage.setImageBitmap(monBitmap);
         return convertView;
 
     }
