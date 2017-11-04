@@ -21,12 +21,14 @@
             android:id="@+id/main_layout">
 
             <TextView
-                android:text="Catégories"
+                android:id="@+id/activity_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/activity_title" />
+                android:text="Catégories"
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>
