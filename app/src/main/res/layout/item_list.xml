@@ -12,9 +12,12 @@
         android:layout_toRightOf="@+id/itemImage"
         android:paddingLeft="10dp"
         android:paddingRight="6dp"
-        android:text="Sarah"
+        android:text="monTexte"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/colorTextListView"/>
+        android:textColor="@color/colorTextListView"
+        android:layout_toEndOf="@+id/itemImage"
+        android:paddingStart="10dp"
+        android:paddingEnd="6dp" />
 
     <ImageView
         android:layout_alignParentLeft="true"
@@ -22,7 +25,7 @@
         android:id="@+id/itemImage"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/schema1"
-        android:contentDescription="icone" />
-
+        android:src="@drawable/schema_test"
+        android:contentDescription="image de la liste"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

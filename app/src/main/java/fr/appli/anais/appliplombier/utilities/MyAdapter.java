@@ -17,13 +17,11 @@ import java.util.ArrayList;
 import fr.appli.anais.appliplombier.R;
 
 public class MyAdapter extends ArrayAdapter<String> {
-    private final Context context;
     private final ArrayList<String> texts;
     private final ArrayList<String> images;
 
     public MyAdapter(Context context, ArrayList<String> texts, ArrayList<String> images) {
         super(context, 0, texts);
-        this.context = context;
         this.texts = texts;
         this.images = images;
     }

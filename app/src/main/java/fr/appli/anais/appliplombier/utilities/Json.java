@@ -35,15 +35,15 @@ public class Json {
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line;
-        String result = "";
+        StringBuilder result = new StringBuilder();
         while ((line = bufferedReader.readLine()) != null)
-            result += line;
+            result.append(line);
 
         inputStream.close();
-        return result;
+        return result.toString();
     }
 
-    public static void GET(String url) {
+    private static void GET(String url) {
         try {
 
             // create HttpClient
@@ -63,21 +63,21 @@ public class Json {
         }
     }
 
-    public static void updateJSON(InputStream is) {
+    private static void updateJSON(InputStream is) {
 
         File dcim = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_DOWNLOADS), "bd.json");
 
         try {
-            Log.d("WOW", dcim.getCanonicalPath());
+            Log.d("JSON_UPDATE", dcim.getCanonicalPath());
             String monJson = convertInputStreamToString(is);
-            Log.d("WOW", monJson);
+            Log.d("JSON_UPDATE", monJson);
             OutputStream outStream = new FileOutputStream(dcim);
             outStream.write(monJson.getBytes());
             is.close();
             outStream.close();
         } catch (IOException ie) {
-            Log.d("STATE", "Problème dans la mise à jour du fichier JSON");
+            Log.d("JSON_UPDATE", "Problème dans la mise à jour du fichier JSON");
         }
     }
 
@@ -93,14 +93,15 @@ public class Json {
                 line = br.readLine();
             }
         } catch (IOException ioe) {
-            // TODO mettre un toaster pour avertir l'utilisateur
+            // si le fichier téléchargé lors de la première connexion n'existe pas,
+            // on se rabat sur le fichier interne de l'appli
             return recupJSONLocal(context);
         }
         return res.toString();
     }
 
     private static String recupJSONLocal(Context context) {
-        InputStream inputStream = context.getResources().openRawResource(R.raw.test);
+        InputStream inputStream = context.getResources().openRawResource(R.raw.bd_locale);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
         int ctr;
@@ -115,22 +116,14 @@ public class Json {
             e.printStackTrace();
         }
         Log.v("Text Data", byteArrayOutputStream.toString());
-        String monJson = byteArrayOutputStream.toString();
-        return monJson;
-    }
-
-    /* Checks if external storage is available for read and write */
-    public boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(state);
+        return byteArrayOutputStream.toString();
     }
 
     public static class HttpAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
-
             GET(urls[0]);
-            return "b";
+            return "b";  //le string retourner n'est pas utile dans ce cas
         }
 
         // onPostExecute displays the results of the AsyncTask.

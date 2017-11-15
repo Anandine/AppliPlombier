@@ -7,10 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,15 +29,6 @@ public class CatActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
         final String title = getIntent().getStringExtra("Title");
         final int num_cat = getIntent().getIntExtra("Num cat", 0);
 
@@ -53,7 +42,7 @@ public class CatActivity extends AppCompatActivity {
         ArrayList<String> mesSubCatsTexts = new ArrayList<>();
         ArrayList<String> mesSubCatsImages = new ArrayList<>();
 
-        //on ajoute dynamiquement autant de boutons que de sous cat
+        //on ajoute dynamiquement autant d'entrée dans la collection qu'il y a de sous-catégories
         try {
             JSONObject jsonObject = new JSONObject(monJson);
             JSONArray cats = jsonObject.getJSONArray("contenu");

@@ -24,16 +24,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // check if you are connected or not
+        // check si l'appareil est connecté
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         if (Json.isConnected(cm)) {
             Log.d("STATE", "You are connected");
-            /*Context context = getApplicationContext();
-            CharSequence text = "You are connected";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();*/
 
         } else {
             Log.d("STATE", "Not connected");
@@ -42,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         //on récupère le json
         String monJson = Json.recupJSON(getApplicationContext());
 
-        //on ajoute dynamiquement autant de boutons que de sous cat
+        //on ajoute dynamiquement autant de boutons que de catégories
         try {
             JSONObject jsonObject = new JSONObject(monJson);
             JSONArray cats = jsonObject.getJSONArray("contenu");
@@ -54,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
                         LinearLayout.LayoutParams.WRAP_CONTENT);
                 Button btn = new Button(this);
                 btn.setId(i);
-                final int id_ = btn.getId();
                 btn.setText(btn_txt);
                 linear.addView(btn, params);
                 final int finalI = i;
@@ -74,49 +67,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("EXCEPTION", "Problème lors de l'affichage des boutons : " + e.toString());
         }
-        //on déclare le bouton d'id cat1 qu'on stoque dans la variable Button b1
-        /*Button b1 = (Button) this.findViewById(R.id.cat1);
-        b1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //on relie les deux activités
-                Intent I = new Intent(MainActivity.this, CatActivity.class);
-                //on change le texte du titre de l'écran suivant avec le nom du bouton b1
-                I.putExtra("Title", ((Button) v).getText().toString());
-                I.putExtra("Num cat", 1);
-                //on change d'écran au clic du bouton après avoir changé le titre
-                startActivity(I);
-            }
-        });
-        Button b2 = (Button) this.findViewById(R.id.cat2);
-        b2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent I = new Intent(MainActivity.this, CatActivity.class);
-                //ou
-                //Intent I = new Intent();
-                //intent.getClass(this, CatActivity.class);
-                I.putExtra("Title", ((Button) v).getText().toString());
-                I.putExtra("Num cat", 2);
-                startActivity(I);
-            }
-        });
-        Button b3 = (Button) this.findViewById(R.id.cat3);
-        b3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent I = new Intent(MainActivity.this, CatActivity.class);
-                I.putExtra("Title", ((Button) v).getText().toString());
-                I.putExtra("Num cat", 3);
-                startActivity(I);
-            }
-        });
-        Button b4 = (Button) this.findViewById(R.id.cat4);
-        b4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent I = new Intent(MainActivity.this, CatActivity.class);
-                I.putExtra("Title", ((Button) v).getText().toString());
-                I.putExtra("Num cat", 4);
-                startActivity(I);
-            }
-        });*/
+
         // call AsynTask to perform network operation on separate thread
         new Json.HttpAsyncTask().execute("https://hyppo.neocities.org/bd.json");
     }

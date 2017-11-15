@@ -31,11 +31,6 @@ public class SousCatActivity extends AppCompatActivity {
 
         try {
             String monJson = Json.recupJSON(getApplicationContext());
-            /*
-            JSONObject jsonObject = new JSONObject(monJson);
-            JSONArray subcats = jsonObject.getJSONArray(getIntent().getStringExtra("Cat"));
-            int num_sous_cat = getIntent().getIntExtra("Num sous cat", 0);
-            JSONArray my_subcat = (JSONArray) subcats.get(num_sous_cat);*/
             JSONObject jsonObject = new JSONObject(monJson);
             JSONArray cat = jsonObject.getJSONArray("contenu");
             int num_cat = getIntent().getIntExtra("Num cat", 0);
@@ -73,7 +68,7 @@ public class SousCatActivity extends AppCompatActivity {
             Log.d("STATE", je.toString());
 
             Context context = getApplicationContext();
-            Toast toast = Toast.makeText(context, je.toString(), Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(context, "erreur de récupération des données", Toast.LENGTH_LONG);
             toast.show();
         }
     }
