@@ -36,10 +36,10 @@ public class MyAdapter extends ArrayAdapter<String> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_list, parent, false);
         }
-        TextView itemText = (TextView) convertView.findViewById(R.id.itemText);
+        TextView itemText = convertView.findViewById(R.id.itemText);
         itemText.setText(texts.get(position));
 
-        ImageView itemImage = (ImageView) convertView.findViewById(R.id.itemImage);
+        ImageView itemImage = convertView.findViewById(R.id.itemImage);
         byte[] monImage = Base64.decode(images.get(position), Base64.DEFAULT);
         Bitmap monBitmap = BitmapFactory.decodeByteArray(monImage, 0, monImage.length);
         itemImage.setImageBitmap(monBitmap);

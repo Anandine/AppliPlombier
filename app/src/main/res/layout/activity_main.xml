@@ -12,19 +12,26 @@
     tools:context="fr.appli.anais.appliplombier.Activities.MainActivity">
 
     <TextView
-        android:id="@+id/activity_title"
+        android:id="@+id/main_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/main_title"
         android:textAlignment="center"
-        android:textSize="20sp" />
+        android:textColor="@color/colorPrimaryDark"
+        android:clickable="true"
+        android:textSize="20sp"
+        android:focusable="true" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/activity_title">
+        android:layout_below="@+id/main_title">
 
         <LinearLayout
             android:id="@+id/main_layout"

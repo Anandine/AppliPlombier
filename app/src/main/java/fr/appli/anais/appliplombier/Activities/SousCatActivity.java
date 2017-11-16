@@ -26,7 +26,7 @@ public class SousCatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sous_cat);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         try {
@@ -43,17 +43,17 @@ public class SousCatActivity extends AppCompatActivity {
             String description = subcat.getString("description");
             String imgB64 = subcat.getString("image");
 
-            TextView cat_title = (TextView) this.findViewById(R.id.sous_cat_activity_title);
+            TextView cat_title = this.findViewById(R.id.sous_cat_activity_title);
             if (title != null) {
                 cat_title.setText(title);
             }
             // on affiche le premier texte de chaque sous-catégorie
-            TextView cat_summary = (TextView) this.findViewById(R.id.summary);
+            TextView cat_summary = this.findViewById(R.id.summary);
             cat_summary.setMovementMethod(new ScrollingMovementMethod());
             if (presentation != null) {
                 cat_summary.setText(presentation);
             }
-            TextView cat_details = (TextView) this.findViewById(R.id.details);
+            TextView cat_details = this.findViewById(R.id.details);
             cat_details.setMovementMethod(new ScrollingMovementMethod());
             if (description != null) {
                 cat_details.setText(description);
@@ -61,7 +61,7 @@ public class SousCatActivity extends AppCompatActivity {
 
             byte[] monImage = Base64.decode(imgB64, Base64.DEFAULT);
             Bitmap monBitmap = BitmapFactory.decodeByteArray(monImage, 0, monImage.length);
-            ImageView image = (ImageView) findViewById(R.id.image);
+            ImageView image = findViewById(R.id.image);
             image.setImageBitmap(monBitmap);
         } catch (JSONException je) {
             //je.printStackTrace();

@@ -26,13 +26,13 @@ public class CatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cat);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         final String title = getIntent().getStringExtra("Title");
         final int num_cat = getIntent().getIntExtra("Num cat", 0);
 
-        TextView cat_title = (TextView) this.findViewById(R.id.cat_activity_title);
+        TextView cat_title = this.findViewById(R.id.cat_activity_title);
         if (title != null) {
             cat_title.setText(title);
         }
@@ -56,7 +56,7 @@ public class CatActivity extends AppCompatActivity {
             Log.d("STATE", je.toString());
         }
 
-        ListView maListView = (ListView) findViewById(R.id.catListView);
+        ListView maListView = findViewById(R.id.catListView);
         MyAdapter adapter = new MyAdapter(getApplicationContext(), mesSubCatsTexts, mesSubCatsImages);
         maListView.setAdapter(adapter);
 

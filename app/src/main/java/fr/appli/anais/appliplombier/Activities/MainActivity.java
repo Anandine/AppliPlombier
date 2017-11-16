@@ -2,6 +2,7 @@ package fr.appli.anais.appliplombier.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
         if (Json.isConnected(cm)) {
             Log.d("STATE", "You are connected");
 
+            // on previent l'utilisateur d'une fonctionnalité, la première fois qu'il est connecté
+            SharedPreferences settings = getPreferences(MODE_PRIVATE);
+            boolean tip = settings.getBoolean("tip", false);
+            if(!tip) {
+                Toast.makeText(getApplicationContext(),"vous pouvez mettre à jour les catégories en cliquant sur le titre",
+                        Toast.LENGTH_LONG).show();
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("tip", true);  // on se rappelle que le tip a déjà été affiché
+                editor.apply();  // sauvegarde en arrière plan
+            }
         } else {
             Log.d("STATE", "Not connected");
         }
@@ -68,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("EXCEPTION", "Problème lors de l'affichage des boutons : " + e.toString());
         }
+
+        // on permet au titre d'être clickable pour mettre à jour les catégories
+        TextView title = findViewById(R.id.main_title);
+        title.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                recreate();  // permet à l'appli d'afficher les derniers éléments téléchargés
+            }
+        });
 
         // call AsynTask to perform network operation on separate thread
         new Json.HttpAsyncTask().execute("https://hyppo.neocities.org/bd.json");
