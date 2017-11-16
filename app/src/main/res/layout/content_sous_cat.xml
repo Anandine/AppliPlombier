@@ -5,6 +5,8 @@
     android:id="@+id/content_sous_cat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:maxHeight="100dp"
+    android:maxWidth="100dp"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -20,7 +22,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="Sous catégorie 1"
-        android:textSize="16sp" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/summary"
@@ -28,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/image"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
         android:textColor="@android:color/black" />
 
@@ -35,30 +39,35 @@
         android:id="@+id/details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
         android:layout_marginTop="24dp"
         android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-        android:textColor="@android:color/black"
-        android:layout_alignParentLeft="true" />
+        android:textColor="@android:color/black" />
 
     <TextView
-        android:text="Plus de détails"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="61dp"
-        android:id="@+id/textView"
         android:layout_below="@+id/summary"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:text="Plus de détails"
+        android:textColor="@android:color/black" />
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/sous_cat_activity_title"
-        android:layout_marginTop="42dp"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
-        android:layout_alignParentLeft="true" />
+        android:layout_marginTop="30dp"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:minHeight="10dp"
+        android:minWidth="10dp"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
 </RelativeLayout>

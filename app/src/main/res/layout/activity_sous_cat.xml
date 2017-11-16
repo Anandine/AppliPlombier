@@ -20,14 +20,16 @@
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@android:color/background_dark"
                 android:theme="@style/AppTheme.AppBarOverlay">
+
                 <TextView
                     android:id="@+id/textViewTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
                     android:layout_marginLeft="5dp"
-                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"/>
+                    android:text="@string/app_name"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
                 />
             </android.support.design.widget.AppBarLayout>
 

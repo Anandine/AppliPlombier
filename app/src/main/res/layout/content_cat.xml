@@ -33,7 +33,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="Catégorie 1"
-        android:textSize="16sp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
         tools:text="Catégorie 1" />
 
 </RelativeLayout>
