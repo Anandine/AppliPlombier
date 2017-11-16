@@ -86,11 +86,10 @@ public class MainActivity extends AppCompatActivity {
         TextView title = findViewById(R.id.main_title);
         title.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                recreate();  // permet à l'appli d'afficher les derniers éléments téléchargés
+                // permet à l'appli d'afficher les derniers éléments téléchargés
+                Intent I = new Intent(MainActivity.this, SplashScreen.class);
+                startActivity(I);
             }
         });
-
-        // call AsynTask to perform network operation on separate thread
-        new Json.HttpAsyncTask().execute("https://hyppo.neocities.org/bd.json");
     }
 }

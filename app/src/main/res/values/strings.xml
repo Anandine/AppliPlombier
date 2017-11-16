@@ -3,4 +3,6 @@
     <string name="title_activity_cat">AppliPlombier</string>
     <string name="title_activity_sous_cat">AppliPlombier</string>
     <string name="main_title">Catégories</string>
+    <string name="splash_screen">splash screen</string>
+    <string name="splash_text">please wait</string>
 </resources>
