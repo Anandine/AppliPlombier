@@ -27,12 +27,13 @@
         android:layout_below="@+id/cat_activity_title"></LinearLayout>
 
     <TextView
-        android:text="Catégorie 1"
+        android:id="@+id/cat_activity_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/cat_activity_title"
+        android:text="Catégorie 1"
+        android:textSize="16sp"
         tools:text="Catégorie 1" />
 
 </RelativeLayout>

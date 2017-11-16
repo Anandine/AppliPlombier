@@ -2,4 +2,5 @@
     <string name="app_name">AppliPlombier</string>
     <string name="title_activity_cat">CatActivity</string>
     <string name="title_activity_sous_cat">SousCatActivity</string>
+    <string name="main_title">Catégories</string>
 </resources>

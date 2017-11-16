@@ -14,29 +14,33 @@
     tools:showIn="@layout/activity_sous_cat">
 
     <TextView
-        android:text="Sous catégorie 1"
+        android:id="@+id/sous_cat_activity_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/sous_cat_activity_title" />
+        android:text="Sous catégorie 1"
+        android:textSize="16sp" />
 
     <TextView
-        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+        android:id="@+id/summary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/image"
         android:layout_centerHorizontal="true"
-        android:id="@+id/summary" />
+        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+        android:textColor="@android:color/black" />
 
     <TextView
-        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+        android:id="@+id/details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/details"
-        android:layout_marginTop="24dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="24dp"
+        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+        android:textColor="@android:color/black"
+        android:layout_alignParentLeft="true" />
 
     <TextView
         android:text="Plus de détails"
@@ -48,12 +52,13 @@
         android:layout_centerHorizontal="true" />
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
-        android:layout_marginTop="42dp"
-        android:id="@+id/image"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/sous_cat_activity_title"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="42dp"
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        android:layout_alignParentLeft="true" />
 
 </RelativeLayout>

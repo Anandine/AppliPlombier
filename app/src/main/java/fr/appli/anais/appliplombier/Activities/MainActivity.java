@@ -42,10 +42,11 @@ public class MainActivity extends AppCompatActivity {
             JSONArray cats = jsonObject.getJSONArray("contenu");
             for (int i = 0; i <= cats.length(); i++) {
                 String btn_txt = ((JSONObject) cats.get(i)).getString("titreCat");
-                LinearLayout linear = (LinearLayout) findViewById(R.id.main_layout);
+                LinearLayout linear = findViewById(R.id.main_layout);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(30, 30, 30, 0);
                 Button btn = new Button(this);
                 btn.setId(i);
                 btn.setText(btn_txt);
