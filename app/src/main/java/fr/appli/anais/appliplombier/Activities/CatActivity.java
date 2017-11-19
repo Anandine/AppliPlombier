@@ -15,9 +15,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import CustomAdapter.MyAdapter;
 import fr.appli.anais.appliplombier.R;
 import fr.appli.anais.appliplombier.utilities.Json;
-import fr.appli.anais.appliplombier.utilities.MyAdapter;
 
 public class CatActivity extends AppCompatActivity {
 
