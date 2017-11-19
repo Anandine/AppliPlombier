@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 // permet à l'appli d'afficher les derniers éléments téléchargés
                 Intent I = new Intent(MainActivity.this, SplashScreen.class);
                 startActivity(I);
+                MainActivity.this.finish();
             }
         });
     }
